@@ -28,7 +28,7 @@ const PickLabRequestActionMenu: React.FC<PickLabRequestActionMenuProps> = ({
   }, [order]);
 
   const overflowMenuItemLabel = shouldPayBill
-    ? t("payBill", "Pay Bill")
+    ? t("pendingBill", "Pending bill")
     : t("pickLabRequest", "Pick Lab Request");
 
   if (isLoading) {

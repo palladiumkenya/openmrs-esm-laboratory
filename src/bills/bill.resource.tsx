@@ -6,6 +6,7 @@ import {
 import useSWR from "swr";
 
 const IN_PATIENT_VISIT_TYPE_UUID = "a73e2ac6-263b-47fc-99fc-e0f2c09fc914";
+const EMERGENCY = "EMERGENCY";
 
 type LineItem = {
   paymentStatus: string;
@@ -54,7 +55,7 @@ const usePatientQueue = (patientUuid: string) => {
     data: { results: Array<QueueEntry> };
   }>(url, openmrsFetch);
   const isEmergencyPatient =
-    data?.data?.results?.[0]?.queueEntry?.priority?.display === "Emergency";
+    data?.data?.results?.[0]?.queueEntry?.priority?.display === EMERGENCY;
   const isInQueue = data?.data?.results?.length > 0;
   return { isInQueue, isLoading, error, isEmergencyPatient };
 };
