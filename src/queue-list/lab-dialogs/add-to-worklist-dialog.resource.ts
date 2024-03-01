@@ -112,9 +112,13 @@ export function useSpecimenTypes() {
     apiUrl,
     openmrsFetch
   );
-
+  const specimenTypes = data ? data?.data?.answers.map((answer) => {
+    return answer.uuid === "159993AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ? { ...answer, display: "Stool" }
+      : answer;
+  }) : [];
   return {
-    specimenTypes: data ? data?.data?.answers : [],
+    specimenTypes,
     isLoading,
   };
 }
