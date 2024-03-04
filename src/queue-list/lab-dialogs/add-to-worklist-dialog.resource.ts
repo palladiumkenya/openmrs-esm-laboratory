@@ -2,6 +2,7 @@ import { FetchResponse, openmrsFetch, useConfig } from "@openmrs/esm-framework";
 import { useMemo } from "react";
 import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
+import { STOOL_CONCEPT_ID, STOOL_DISPLAY } from "../../constants";
 
 export interface QueueRoomsResponse {
   uuid: string;
@@ -113,8 +114,8 @@ export function useSpecimenTypes() {
     openmrsFetch
   );
   const specimenTypes = data ? data?.data?.answers.map((answer) => {
-    return answer.uuid === "159993AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-      ? { ...answer, display: "Stool" }
+    return answer.uuid === STOOL_CONCEPT_ID
+      ? { ...answer, display: STOOL_DISPLAY }
       : answer;
   }) : [];
   return {
