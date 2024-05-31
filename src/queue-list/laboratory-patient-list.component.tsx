@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   DataTable,
   DataTableSkeleton,
@@ -7,48 +7,32 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableExpandHeader,
-  TableExpandRow,
-  OverflowMenuItem,
-  OverflowMenu,
   TableHead,
   TableHeader,
   TableRow,
-  TabPanel,
   TableToolbar,
   TableToolbarContent,
   TableToolbarSearch,
   Layer,
   Tag,
-  TableExpandedRow,
   Tile,
-  Button,
   DatePicker,
   DatePickerInput,
 } from "@carbon/react";
-import { TrashCan, OverflowMenuVertical } from "@carbon/react/icons";
-
+import { OverflowMenuVertical } from "@carbon/react/icons";
 import { useTranslation } from "react-i18next";
 import {
   ExtensionSlot,
-  age,
   formatDate,
-  formatDatetime,
   parseDate,
-  showModal,
   usePagination,
-  useSession,
 } from "@openmrs/esm-framework";
 import styles from "./laboratory-queue.scss";
 import { getStatusColor } from "../utils/functions";
-import { Result, useGetOrdersWorklist } from "../work-list/work-list.resource";
+import { useGetOrdersWorklist } from "../work-list/work-list.resource";
 import OrderCustomOverflowMenuComponent from "../ui-components/overflow-menu.component";
 
 interface LaboratoryPatientListProps {}
-
-interface RejectOrderProps {
-  order: Result;
-}
 
 const LaboratoryPatientList: React.FC<LaboratoryPatientListProps> = () => {
   const { t } = useTranslation();
